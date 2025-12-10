@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Love Letter</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #111;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Segoe UI", sans-serif;
+        color: white;
+        overflow-y: auto;
+        text-align: center;
+    }
+
+    .open-btn {
+        padding: 15px 35px;
+        font-size: 22px;
+        background: #ff4f8b;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(255, 0, 100, 0.7);
+        transition: 0.3s;
+    }
+
+    .open-btn:hover {
+        transform: scale(1.1);
+    }
+
+    /* Letter wrapper now auto resizes */
+    .letter-wrapper {
+        display: none;
+        width: 90%;
+        max-width: 900px;
+        margin-top: 40px;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .letter {
+        background: url('birthday-photo.jpg') no-repeat center/cover;
+        border-radius: 15px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+    }
+
+    .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.55);
+        backdrop-filter: blur(2px);
+    }
+
+    .message {
+        position: relative;
+        z-index: 2;
+        padding: 40px;
+        font-size: 21px;
+        line-height: 1.7;
+    }
+
+    h1 {
+        font-size: 42px;
+        margin-bottom: 15px;
+    }
+
+    /* Hearts */
+    .heart {
+        position: absolute;
+        color: pink;
+        font-size: 26px;
+        animation: floatUp 6s linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-700px) scale(1.7); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<button class="open-btn" onclick="openLetter()">💌 Click to Open Your Love Letter 💌</button>
+
+<div class="letter-wrapper" id="letterBox">
+    <div class="letter">
+        <div class="overlay"></div>
+
+        <div class="message">
+            <h1>Happy Birthday, My Love ❤️</h1>
+
+            <p><i>*HAPPY BIRTHDAY TO THE MAN who I love the most 🫂 ❤️*</i></p>
+
+            <p>
+                Thank you for showing up in my life and staying —  
+                for the laughter, the late-night talks,  
+                the silent understanding, and even the difficult conversations.  
+                Thank you for being real with me 🫂 
+            </p>
+
+            <p>
+                You're not just someone I care about —  
+                you're the person who changed the way I see the world  
+                and myself.
+            </p>
+
+            <p>
+                So today, I hope you feel even a fraction of the love  
+                you've given me. You deserve that and so much more.
+            </p>
+
+            <p>
+                I hope this year brings you peace, joy,  
+                and everything you’ve quietly wished for  
+                when no one was listening.
+            </p>
+
+            <p>
+                Happy Birthday.  
+                I’m so lucky I get to say I know you —  
+                and even luckier that I get to love you 😘
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+function openLetter() {
+    document.querySelector(".open-btn").style.display = "none";
+    const box = document.getElementById("letterBox");
+    box.style.display = "block";
+
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 90 + "%";
+        heart.style.bottom = "0px";
+        heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+
+        box.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, 400);
+}
+</script>
+
+</body>
+</html>
